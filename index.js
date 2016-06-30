@@ -426,9 +426,9 @@ function getDetails(id)
 				        		]
 				        	
 				 }       
-	       			};
+	       			}
 				
-			}
+			};
 			return temp;
         }
         else
