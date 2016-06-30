@@ -419,7 +419,7 @@ function getDetails(id)
 	        									"type" : "postback",
 	        									"payload" : "commentary "+id,
 	        									"title" : "Last Five Balls"
-			        						}
+			        						},
 				        				]
 									}
 								
@@ -428,7 +428,7 @@ function getDetails(id)
 				 }       
 	       			}
 				
-			};
+			}
 			return temp;
         }
         else
@@ -459,7 +459,7 @@ function getDetails(id)
 			        		]
 			        	}
 			        }
-       			};
+       			}
         	return temp;
         }
 }

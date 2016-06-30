@@ -426,7 +426,7 @@ function getDetails(id)
 				        		]
 				        	
 				 }       
-	       			};
+	       			}
 				
 			}
 			return temp;
@@ -459,7 +459,7 @@ function getDetails(id)
 			        		]
 			        	}
 			        }
-       			};
+       			}
         	return temp;
         }
 }
