@@ -183,18 +183,13 @@ function getAll()
 					//		}
 			console.log("\n c length "+ c+"\nlinks length "+links.length+" "+short.length+" "+result.length+" "+headers.length);
 			
-			for (a=0;(a<links.length)&&(a<11);a++)
+			for (a=0;(a<links.length);a++)
 			{
-				if (a==0)
-				{
-					continue;
-				}
-				else
-				{
+	
 					var idtext=links[a].replace('/cricket-commentary/','');
 					var idresult=idtext.split('/',1);
-					id.push(idresult[0]);}	}		
-	    		    for(i=0;i<headers.length;i++)
+					id.push(idresult[0]);}			
+	    		    	for(i=0;i<headers.length;i++)
 			        {	
 					console.log("inside header");
 			        	var title = headers[i].toLowerCase();
