@@ -183,7 +183,7 @@ function getAll()
 					//		}
 			console.log("\n c length "+ c+"\nlinks length "+links.length+" "+short.length+" "+result.length+" "+headers.length);
 			
-			for (a=0;a<links.length||a<10;a++)
+			for (a=0;(a<links.length)&&(a<10);a++)
 			{
 				if (a==0)
 				{
