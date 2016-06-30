@@ -320,7 +320,7 @@ function getCommentry(sender,id)
 				});
 		
 	for (i=0;i<5;i++){
-		sendTextMessage(sender,commentary.slice(i*320,(i+1)*320)
+		sendTextMessage(sender,commentary.slice(i*320,(i+1)*320))
 		sleep.sleep(3);
 	}
 }	
