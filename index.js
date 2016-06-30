@@ -346,6 +346,7 @@ let match;
 
 function getDetails(id,text)
 {
+	console.log('\n\n'+text+'\n\n')
 	if(text.indexOf("Starts")>-1){
 		temp = 
         		{
