@@ -299,8 +299,8 @@ function getAll()
 let allcommentry=[]
 function getCommentry(sender,id)
 {	
-	commentary=''
-	comment = undefined;
+	var commentary=''
+	var comment = undefined;
 	request(
 	{
 			url: "http://m.cricbuzz.com/cricket-commentary/"+id

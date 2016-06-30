@@ -319,7 +319,7 @@ function getCommentry(sender,id)
 					commentary=commentary+' '+e(this).text()+'\n'
 				});
 		
-	for (i=0;i<5;i++){
+	for (var i=0;i<5;i++){
 		sendTextMessage(sender,commentary.slice(i*320,(i+1)*320))
 		sleep.sleep(3);
 	}
