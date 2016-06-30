@@ -65,8 +65,8 @@ app.post('/webhook/', function (req, res)
 						var idandsummary = text.toLowerCase().replace("more ","");
 						var index = idandsummary.indexOf("^");  // Gets the first index where a space occours
 						var id = idandsummary.substr(0, index); // Gets the first part
-						var text = idandsummary.substr(index + 1)
-						tellScoredetails(sender,id,text);
+						var tex = idandsummary.substr(index + 1)
+						tellScoredetails(sender,id,tex);
 					}
 					else if(text.indexOf("commentary")>-1)
 					{
