@@ -213,7 +213,7 @@ function getAll()
 								},
 							    {
 	        						"type" : "postback",
-			        				"payload" : "more scores "+id[i]+'^'+short[i],
+			        				"payload" : "more scores "+id[i]+'^'+result[i],
 	    		    				"title" : "Show Details ..."
 			    		    	}
 						    ]
