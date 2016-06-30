@@ -75,7 +75,7 @@ app.post('/webhook/', function (req, res)
 					else if(text.indexOf("refresh")>-1)
 					{	
 				
-						tellScote(sender,"null");
+						tellScore(sender,"null");
 					}	
 				            
 	     	}
