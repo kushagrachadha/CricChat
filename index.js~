@@ -63,9 +63,9 @@ app.post('/webhook/', function (req, res)
 						text = text.replace("more scores ","").toLowerCase();
 						text = text.replace("scores","").toLowerCase();
 						var idandsummary = text.toLowerCase().replace("more ","");
-						var index = someString.indexOf("^");  // Gets the first index where a space occours
-						var id = someString.substr(0, index); // Gets the first part
-						var text = someString.substr(index + 1)
+						var index = idandsummary.indexOf("^");  // Gets the first index where a space occours
+						var id = idandsummary.substr(0, index); // Gets the first part
+						var text = idandsummary.substr(index + 1)
 						tellScoredetails(sender,id,text);
 					}
 					else if(text.indexOf("commentary")>-1)
