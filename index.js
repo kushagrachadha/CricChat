@@ -5,6 +5,7 @@ const request = require('request');
 const app = express();
 const deasync = require('deasync');
 const cheerio = require('cheerio');
+const sleep = require('sleep');
 app.set('port', (process.env.PORT || 5000));
 
 // Process application/x-www-form-urlencoded
@@ -60,7 +61,7 @@ app.post('/webhook/', function (req, res)
 				
 					if(text.indexOf("more")>-1)
 					{	var ind = text.indexOf("^")
-						var tex = text.substr(index + 1)
+						var tex = text.substr(ind + 1)
 						text = text.replace("more scores ","").toLowerCase();
 						text = text.replace("scores","").toLowerCase();
 						var idandsummary = text.toLowerCase().replace("more ","");
@@ -74,7 +75,7 @@ app.post('/webhook/', function (req, res)
 						text = text.replace("commentary ","").toLowerCase();
 						text = text.replace("commentary ","").toLowerCase();
 						var id = text.toLowerCase().replace("commentary ","");
-						sendCommentry(sender,id);
+						getCommentry(sender,id);
 					}
 					else if(text.indexOf("refresh")>-1)
 					{	
@@ -128,7 +129,7 @@ function getAll()
 		}
 	});
 	deasync.loopWhile(function(){return (allmatches === undefined);});
-	//var commenthtml=comment['commentary'];
+	
 	
 	var headers=[];
 	var index =0; 
@@ -296,50 +297,32 @@ function getAll()
 
 //var comment;
 let allcommentry=[]
-function getCommentry(id)
-{
-	var phantom = require('node-phantom');
-	phantom.create(function(ph)
+function getCommentry(sender,id)
+{	
+	commentary=''
+	comment = undefined;
+	request(
 	{
-  		return ph.createPage(function(page)
-  		{
-    		return page.open("http://www.espncricinfo.com/ci/engine/match/"+id+".html", function(status)
-    		{
-      			console.log("opened site? ", status);         
-            		page.injectJs('http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', 
-            			function(){
-                			//jQuery Loaded.
-                			//Wait for a bit for AJAX content to load on the page. Here, we are waiting 5 seconds.
-                			setTimeout(function()
-                			{
-                    			return page.evaluate(function()
-                    			{
-                        			$('div .commentary-event').each(function()
-                        			{
-										//console.log($(this).html());
-                            			allcommentry.push($(this).html());
-                        			});
- 
-                        			return
-                        			{
-                            			comment:allcommentry
-                        			};
-                    			}, 
-                    			function(result)
-                    			{
-                        			console.log(result);
-                        			allcommentry = result.comment;
-                        			ph.exit();
-                    			});
-                			}, 3000);
-            			});
-    		});
-    	});
+			url: "http://m.cricbuzz.com/cricket-commentary/"+id
+	}, function (error, response, body)
+	{
+		if (!error && response.statusCode === 200)
+		{
+				comment=body;
+				//console.log("\n \n getting match details json"+JSON.stringify(allmatches));
+		}
 	});
-	var tobereturned='';
-	tobereturned=tobereturned+allcommentry[0]+"\n"+allcommentry[1]+"\n"+allcommentry[2]+"\n"+allcommentry[3]+"\n"+allcommentry[4];
-	console.log('got commentry.................'+tobereturned);	
-	return tobereturned;
+	deasync.loopWhile(function(){return (comment === undefined);});
+	var e=cheerio.load(comment);
+	e('.commtext').each(function()
+				{
+					commentary=commentary+' '+e(this).text()+'\n'
+				});
+		
+	for (i=0;i<5;i++){
+		sendTextMessage(sender,commentary[i*320:(i+1)*320])
+		sleep.sleep(3);
+	}
 }	
 
 //getting single details
@@ -518,7 +501,6 @@ function tellScore(sender)
             if (error)
             {
                 console.log('Error sending messages: ', error);
-            }
             else if (response.body.error)
             {
                 console.log('Error: ', response.body.error);
@@ -556,11 +538,8 @@ function tellScoredetails(sender,id,text)
 }
 
 
-function sendCommentry(sender, id)
-{
-    let messageData = getCommentry(id)
-	messageData = messageData.replace(/\s+/g, ' ');
-	messageData = {text : messageData};
+function sendTextMessage(sender, text) {
+    let messageData = { text:text }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},

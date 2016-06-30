@@ -59,13 +59,14 @@ app.post('/webhook/', function (req, res)
                 console.log("\n \n \n \n Postback recieved "+text);
 				
 					if(text.indexOf("more")>-1)
-					{
-						text = text.replace("more scores ","");
-						text = text.replace("scores","");
-						var idandsummary = text.replace("more ","");
+					{	var ind = text.indexOf("^")
+						var tex = text.substr(ind + 1)
+						text = text.replace("more scores ","").toLowerCase();
+						text = text.replace("scores","").toLowerCase();
+						var idandsummary = text.toLowerCase().replace("more ","");
 						var index = idandsummary.indexOf("^");  // Gets the first index where a space occours
 						var id = idandsummary.substr(0, index); // Gets the first part
-						var tex = idandsummary.substr(index + 1)
+						//var tex = idandsummary.substr(index + 1)
 						tellScoredetails(sender,id,tex);
 					}
 					else if(text.indexOf("commentary")>-1)
@@ -347,7 +348,7 @@ let match;
 function getDetails(id,text)
 {
 	console.log('\n\n'+text+'\n\n')
-	if(text.indexOf("starts")>-1){
+	if(text.indexOf("Starts")>-1){
 		temp =
         		{
         			"attachment" :
