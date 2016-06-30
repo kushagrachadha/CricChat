@@ -221,9 +221,9 @@ function getAll()
 						    ]
 						};
 						c=c+1;
-						if (temp.title.indexOf('India')>-1)
+						if (temp.title.indexOf('Ind')>-1)
 							maintemp = temp;
-						else if((temp.title.indexOf('Australia')>-1)||(temp.title.indexOf('England')>-1)||(temp.title.indexOf('Pakistan')>-1)||(temp.title.indexOf('Sri Lanka')>-1)||(temp.title.indexOf('South Africa')>-1)||(temp.title.indexOf('West Indies')>-1)||(temp.title.indexOf('Bangladesh')>-1)||(temp.title.indexOf('New Zealand')>-1)||(temp.title.indexOf('Zimbabwe')>-1)||(temp.title.indexOf('Afghanistan')>-1)||(temp.title.indexOf('Nepal')>-1)||(temp.title.indexOf('Ireland')>-1)||(temp.title.indexOf('Netherland')>-1))
+						else if((temp.title.indexOf('Aus')>-1)||(temp.title.indexOf('Eng')>-1)||(temp.title.indexOf('Pak')>-1)||(temp.title.indexOf('SL')>-1)||(temp.title.indexOf('RSA')>-1)||(temp.title.indexOf('WI')>-1)||(temp.title.indexOf('Ban')>-1)||(temp.title.indexOf('NZ')>-1)||(temp.title.indexOf('Zim')>-1)||(temp.title.indexOf('Afg')>-1))
 						{
 				   			t.unshift(temp);
 						}
@@ -348,47 +348,41 @@ let match;
 
 function getDetails(id)
 {
+	var titlearr=[]
+	var title=''
+	var textarr=[]
+	var texts=''
 	console.log('getting details.............................................');
 	match = undefined;
 	request(
 	{
-		url: "http://cricapi.com/api/cricketScore?unique_id="+id,
-	   	json: true
+		url: "http://m.cricbuzz.com/cricket-match-summary/"+id
 	}, function (error, response, body)
 	{
 		if (!error && response.statusCode === 200)
 		{
 			match=body;
-			console.log("\n \n getting match details json"+JSON.stringify(allmatches));
+			//console.log("\n \n getting match details json"+JSON.stringify(allmatches));
 		}
 	});
-
 	deasync.loopWhile(function(){return (match === undefined);});
-	
+	d=cheerio.load(match);
+	d('.team-totals').each(function()
+			{
+				titlearr.push(d(this).text());
+			});
+	title=titlearr[0]+' '+titlearr[1]; 
+	d('.table.table-condensed').each(function()
+		{
+				texts=texts+d(this).text()+' '+'\n'
+		});
+
 	var i =0;
 	var temp = {};
-    var found = false;
-    if(match !==undefined)
-    {
-		for(i in allmatches.data)
-	        {
-	        	var uid = allmatches.data[i].unique_id.toLowerCase();
-	        	console.log("\n Current match ids are "+uid);
-	        	if(uid.indexOf(id)>-1)
-	        	{
-	        		found = true;
-					var team1 = match["team-1"];
-					var team2 = match["team-2"];
-					var summary = match.score;
-					var des = match["innings-requirement"];
-					while((summary.indexOf(",")>-1)||(summary.indexOf("(")>-1)||(summary.indexOf(")")>-1))
-					{
-						summary = summary.replace(",","\n");
-						summary = summary.replace("(","\n");
-						summary = summary.replace(")","\n");
-					}
-					
-	        		temp = 
+    	var found = false;
+    	if(match !==undefined)
+    	{
+        		temp = 
 	        		{
 	        			"attachment" :
 	        			{
@@ -399,9 +393,9 @@ function getDetails(id)
 	        					"elements" :
 	        					[
 	        						{
-	        							"title" : team1 + " vs "+ team2,
-										"image_url" : "http://imgur.com/download/vOVMIRu/",
-					        			"subtitle" : summary,
+	        							"title" : title,
+									"image_url" : "http://imgur.com/download/vOVMIRu/",
+					        			"subtitle" : texts,
 										"buttons" :
 	        							[
 					        				{
@@ -418,7 +412,7 @@ function getDetails(id)
 										"buttons" :
 	        							[
 					        				{
-												"type" : "postback",
+											"type" : "postback",
 	        									"payload" : "more scores "+id,
 	        									"title" : "Refresh ..."
 											},{
@@ -427,47 +421,14 @@ function getDetails(id)
 	        									"title" : "Last Five Balls"
 			        						}
 				        				]
-									},
-									{
-										"title" : team1,
-										"subtitle" : "Opens Google Search Page",
-										"image_url" : "http://imgur.com/download/b82yD0i/",
-										"buttons" :
-	        							[
-					        				{
-												"type" : "web_url",
-	        									"url" : "www.google.co.in/search?q="+team1+" cricket+team&oq="+team1+" cricket+team",
-	        									"title" : "Get Info on "+team1
-											}
-				        				]
-									},
-									{
-										"title" : team2,
-										"subtitle" : "Opens Google Search Page",
-										"image_url" : "http://imgur.com/download/b82yD0i/",
-										"buttons" :
-	        							[
-					        				{
-												"type" : "web_url",
-	        									"url" : "www.google.co.in/search?q="+team2+" cricket+team&oq="+team2+" cricket+team",
-	        									"title" : "Get Info on "+team2
-											}
-				        				]
 									}
+								
 				        		]
-				        	}
-				        }
+				        	
+				        
 	       			};
 				}
 			}
-			if(!found)
-			{
-				temp =
-				{
-					text : id + " is not a relevant match ID now"
-				};
-			}
-			
 			return temp;
         }
         else
