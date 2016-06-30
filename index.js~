@@ -429,14 +429,6 @@ function getDetails(id)
 	       			};
 				}
 			}
-			if(!found)
-			{
-				temp =
-				{
-					text : id + " is not a relevant match ID now"
-				};
-			}
-			
 			return temp;
         }
         else
