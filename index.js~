@@ -60,9 +60,9 @@ app.post('/webhook/', function (req, res)
 				
 					if(text.indexOf("more")>-1)
 					{
-						text = text.replace("more scores ","").toLowerCase();
-						text = text.replace("scores","").toLowerCase();
-						var idandsummary = text.toLowerCase().replace("more ","");
+						text = text.replace("more scores ","");
+						text = text.replace("scores","");
+						var idandsummary = text.replace("more ","");
 						var index = idandsummary.indexOf("^");  // Gets the first index where a space occours
 						var id = idandsummary.substr(0, index); // Gets the first part
 						var tex = idandsummary.substr(index + 1)
