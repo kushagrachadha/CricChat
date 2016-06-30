@@ -320,7 +320,7 @@ function getCommentry(sender,id)
 				});
 		
 	for (i=0;i<5;i++){
-		sendTextMessage(sender,commentary.slice(i*320,(i+1)*320))
+		sendTextMessage(sender,commentary.slice(i*320,(i+1)*320)
 		sleep.sleep(3);
 	}
 }	
@@ -500,7 +500,7 @@ function tellScore(sender)
         {
             if (error)
             {
-                console.log('Error sending messages: ', error);
+                console.log('Error sending messages: ', error);}
             else if (response.body.error)
             {
                 console.log('Error: ', response.body.error);
