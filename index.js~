@@ -347,8 +347,8 @@ let match;
 function getDetails(id,text)
 {
 	console.log('\n\n'+text+'\n\n')
-	if(text.indexOf("Starts")>-1){
-		temp = 
+	if(text.indexOf("starts")>-1){
+		temp =
         		{
         			"attachment" :
         			{
