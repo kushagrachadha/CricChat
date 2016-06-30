@@ -366,7 +366,7 @@ function getDetails(id)
 		}
 	});
 	deasync.loopWhile(function(){return (match === undefined);});
-	d=cheerio.load(match);
+	var d=cheerio.load(match);
 	d('.team-totals').each(function()
 			{
 				titlearr.push(d(this).text());
