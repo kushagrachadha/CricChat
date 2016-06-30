@@ -72,7 +72,7 @@ app.post('/webhook/', function (req, res)
 						var id = text.toLowerCase().replace("commentary ","");
 						sendCommentry(sender,id);
 					}
-					else if(text.indexOf("scores ")>-1)
+					else if(text.indexOf("refresh")>-1)
 					{	
 				
 						tellScote(sender,"null");
@@ -196,9 +196,9 @@ function getAll()
 					id.push(idresult[0]);}	}		
 	    		    for(i=0;i<headers.length;i++)
 			        {	
-						console.log("iniside header");
+					console.log("inside header");
 			        	var title = headers[i].toLowerCase();
-	    		    	console.log("\n Teams playing are "+title);
+	    		    		console.log("\n Teams playing are "+title);
 	        	
 	        			temp = 
 	        			{
@@ -210,7 +210,7 @@ function getAll()
 			        		[
 								{
         							"type" : "postback",
-        							"payload" : "scores ",
+        							"payload" : "refresh",
 		        					"title" : "Refresh ..."
 								},
 							    {

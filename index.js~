@@ -1,13 +1,10 @@
 'use strict';
-var path = "/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:vendor/phantomjs/bin"
-//const phantom = require('phantom');
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const deasync = require('deasync');
 const cheerio = require('cheerio');
-
 app.set('port', (process.env.PORT || 5000));
 
 // Process application/x-www-form-urlencoded
@@ -75,6 +72,11 @@ app.post('/webhook/', function (req, res)
 						var id = text.toLowerCase().replace("commentary ","");
 						sendCommentry(sender,id);
 					}
+					else if(text.indexOf("scores ")>-1)
+					{	
+				
+						tellScote(sender,"null");
+					}	
 				            
 	     	}
         }
