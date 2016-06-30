@@ -185,12 +185,11 @@ function getAll()
 			
 			for (a=0;(a<links.length);a++)
 			{
-				else
-				
+	
 					var idtext=links[a].replace('/cricket-commentary/','');
 					var idresult=idtext.split('/',1);
 					id.push(idresult[0]);}			
-	    		    for(i=0;i<headers.length;i++)
+	    		    	for(i=0;i<headers.length;i++)
 			        {	
 					console.log("inside header");
 			        	var title = headers[i].toLowerCase();
