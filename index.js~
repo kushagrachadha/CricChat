@@ -62,8 +62,11 @@ app.post('/webhook/', function (req, res)
 					{
 						text = text.replace("more scores ","").toLowerCase();
 						text = text.replace("scores","").toLowerCase();
-						var id = text.toLowerCase().replace("more ","");
-						tellScoredetails(sender,id);
+						var idandsummary = text.toLowerCase().replace("more ","");
+						var index = someString.indexOf("^");  // Gets the first index where a space occours
+						var id = someString.substr(0, index); // Gets the first part
+						var text = someString.substr(index + 1)
+						tellScoredetails(sender,id,text);
 					}
 					else if(text.indexOf("commentary")>-1)
 					{
@@ -210,7 +213,7 @@ function getAll()
 								},
 							    {
 	        						"type" : "postback",
-			        				"payload" : "more scores "+id[i],
+			        				"payload" : "more scores "+id[i]+'^'short[i],
 	    		    				"title" : "Show Details ..."
 			    		    	}
 						    ]
@@ -341,42 +344,73 @@ function getCommentry(id)
 //getting single details
 let match;
 
-function getDetails(id)
+function getDetails(id,text)
 {
-	var titlearr=[]
-	var title=''
-	var textarr=[]
-	var texts=''
-	console.log('getting details.............................................');
-	match = undefined;
-	request(
-	{
-		url: "http://m.cricbuzz.com/cricket-match-summary/"+id
-	}, function (error, response, body)
-	{
-		if (!error && response.statusCode === 200)
+	if(text.indexOf("Starts")>-1){
+		temp = 
+        		{
+        			"attachment" :
+        			{
+        				"type" : "template",
+        				"payload" : 
+        				{
+        					"template_type" : "generic",
+        					"elements" :
+        					[
+        						{
+        							"title" : "The Match hasn't started yet",
+									"image_url" : "http://imgur.com/download/vOVMIRu/",
+				        			"subtitle" : text,
+    	    							"buttons" :
+        							[
+				        				{
+	        									"type" : "web_url",
+	        									"url": "http://www.cricbuzz.com/live-cricket-scores/"+id,
+	        									"title" : "Details"
+			        					},
+			        				]
+			        			}
+			        		]
+			        	}
+			        }
+       			}
+	        	return temp;
+	}
+	else{
+		var titlearr=[]
+		var title=''
+		var textarr=[]
+		var texts=''
+		console.log('getting details.............................................');
+		match = undefined;
+		request(
 		{
-			match=body;
-			//console.log("\n \n getting match details json"+JSON.stringify(allmatches));
-		}
-	});
-	deasync.loopWhile(function(){return (match === undefined);});
-	var d=cheerio.load(match);
-	d('.team-totals').each(function()
+			url: "http://m.cricbuzz.com/cricket-match-summary/"+id
+		}, function (error, response, body)
+		{
+			if (!error && response.statusCode === 200)
 			{
-				titlearr.push(d(this).text());
-			});
-	title=titlearr[0]+' '+titlearr[1]; 
-	d('.table.table-condensed').each(function()
-		{
-				texts=texts+d(this).text()+' '+'\n'
+				match=body;
+				//console.log("\n \n getting match details json"+JSON.stringify(allmatches));
+			}
 		});
+		deasync.loopWhile(function(){return (match === undefined);});
+		var d=cheerio.load(match);
+		d('.team-totals').each(function()
+				{
+					titlearr.push(d(this).text());
+				});
+		title=titlearr[0]+' '+titlearr[1]; 
+		d('.table.table-condensed').each(function()
+			{
+					texts=texts+d(this).text()+' '+'\n'
+			});
 
-	var i =0;
-	var temp = {};
-    	var found = false;
-    	if(match !==undefined)
-    	{
+		var i =0;
+		var temp = {};
+    		var found = false;
+    		if(match !==undefined)
+    		{
         		temp = 
 	        		{
 	        			"attachment" :
@@ -425,10 +459,10 @@ function getDetails(id)
 				
 			}
 			return temp;
-        }
-        else
-        {
-        	temp = 
+        	}
+        	else
+        	{
+        		temp = 
         		{
         			"attachment" :
         			{
@@ -455,8 +489,9 @@ function getDetails(id)
 			        	}
 			        }
        			}
-        	return temp;
-        }
+	        	return temp;
+        	}
+	}
 }
 
 
@@ -490,10 +525,10 @@ function tellScore(sender)
 }
 
 
-function tellScoredetails(sender,id)
+function tellScoredetails(sender,id,text)
 {	
   
-    let messageData = getDetails(id);
+    let messageData = getDetails(id,text);
     console.log('got details');
     request(
     {
