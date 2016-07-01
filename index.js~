@@ -203,7 +203,7 @@ function getAll()
 	        			temp = 
 	        			{
 	        				"title" : headers[i],
-							"image_url" : "http://placehold.it/350x200/3b5998/f7f7f7?text="+imagetxt,
+							"image_url" : "http://placehold.it/350x0/3b5998/f7f7f7?text="+imagetxt,
 							"subtitle" :result[i],
 							"text":short[i],
 	    	    			"buttons" :
@@ -272,7 +272,7 @@ function getAll()
         					[
         						{
         							"title" : "Couldn't get any Matches, Retry!",
-									"image_url" : "http://imgur.com/download/vOVMIRu/",
+									"image_url" : "http://placehold.it/350x200/3b5998/f7f7f7?text=No+Matches",
 				        			"subtitle" : "Scores",
     	    						"buttons" :
         							[
@@ -344,7 +344,7 @@ function getDetails(id,text)
         					[
         						{
         							"title" : "The Match hasn't started yet",
-									"image_url" : "http://imgur.com/download/vOVMIRu/",
+									"image_url" : "http://placehold.it/350x200/3b5998/f7f7f7?text=Not+Started",
 				        			"subtitle" : text,
     	    							"buttons" :
         							[
@@ -408,7 +408,7 @@ function getDetails(id,text)
 	        					[
 	        						{
 	        							"title" : title,
-									"image_url" : "http://imgur.com/download/vOVMIRu/",
+									"image_url" : "http://placehold.it/350x200/3b5998/f7f7f7?text=Summary",
 					        			"subtitle" : texts,
 										"buttons" :
 	        							[
@@ -421,7 +421,7 @@ function getDetails(id,text)
 				        			},
 									{
 										"title" : "Commentary",
-										"image_url" : "http://imgur.com/download/vOVMIRu/",
+										"image_url" : "http://placehold.it/350x200/3b5998/f7f7f7?text=Commentary",
 										"subtitle" : "Press the button to get last 5 balls ",
 										"buttons" :
 	        							[
@@ -459,7 +459,7 @@ function getDetails(id,text)
         					[
         						{
         							"title" : "Couldn't get the match Details, Retry!",
-									"image_url" : "http://imgur.com/download/vOVMIRu/",
+									"image_url" : "hhttp://placehold.it/350x200/3b5998/f7f7f7?text=No+Details",
 				        			"subtitle" : "Scores",
     	    						"buttons" :
         							[
