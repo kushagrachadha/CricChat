@@ -349,7 +349,7 @@ function getCommentry(sender,id)
 			}
 			sendTextMessage(sender,temp);
 			messagecount = messagecount +1;
-			if(messagecount===4) break;
+			if(messagecount===6) break;
 		}
 		
 		deasync.sleep(50);//ye karun kya? messages line se jaate hain isse meesage bhi kam karde 4-5
