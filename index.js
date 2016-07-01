@@ -412,6 +412,7 @@ function getDetails(id,text)
 						titlearr.push(d(this).text());
 				});
 		titlearr = titlearr.filter(function(n){ return n != undefined });
+		console.log('\n\n'+titlearr.length+'\n\n')
 		if (titlearr.length==1){
 			title=titlearr[0];}
 		else if(titlearr.lenth==2){
