@@ -299,7 +299,8 @@ function getAll()
 let allcommentry=[]
 function getCommentry(sender,id)
 {	
-	var commentary=''
+	var commentary= [];
+	var cLength =0;
 	var comment = undefined;
 	request(
 	{
@@ -316,12 +317,37 @@ function getCommentry(sender,id)
 	var e=cheerio.load(comment);
 	e('.commtext').each(function()
 				{
-					commentary=commentary+' '+e(this).text()+'\n'
+					commentary[cLength]=e(this).text();
+					cLength = cLength +1;
 				});
+	
+	var result;
+	e('.cbz-ui-status').each(function()
+	{
+		result = e(this).text();
+	});
+	
+	if((result.toLowerCase().indexOf('won')>-1)|(result.toLowerCase().indexOf('lose')>-1))
+	{
+		sendTextMessage(sender, "The match has finished, \n Top is last ball");
+	}
+	else
+		sendTextMessage(sender, "Top is last ball");
+	for (var i=0;i<cLength;i++)
+	{
+		var temp = commentary[i];
+		if((temp.toLowerCase().indexOf('1')===0)|(temp.toLowerCase().indexOf('2')===0)|(temp.toLowerCase().indexOf('3')===0)|(temp.toLowerCase().indexOf('4')===0)|(temp.toLowerCase().indexOf('5')===0)|(temp.toLowerCase().indexOf('6')===0)|(temp.toLowerCase().indexOf('7')===0)|(temp.toLowerCase().indexOf('8')===0)|(temp.toLowerCase().indexOf('9')===0))
+		{
+			if(temp.length>320)
+			{
+				temp = temp.slice(0, 320);
+				var t = temp.lastIndexOf(' ');
+				temp = temp.slice(0, t)+"...";
+			}
+			sendTextMessage(sender,temp);
+		}
 		
-	for (var i=0;i<5;i++){
-		sendTextMessage(sender,commentary.slice(i*320,(i+1)*320))
-		sleep.sleep(3);
+		deasync.sleep(300);
 	}
 }	
 
