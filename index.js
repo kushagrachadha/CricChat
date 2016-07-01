@@ -409,9 +409,9 @@ function getDetails(id,text)
 		var d=cheerio.load(match);
 		d('.team-totals').each(function()
 				{
-					if (d(this).text()!=undefined){
-						titlearr.push(d(this).text());}
+						titlearr.push(d(this).text());
 				});
+		titlearr = titlearr.filter(function(n){ return n != undefined });
 		if (titlearr.length==1){
 			title=titlearr[0];}
 		else if(titlearr.lenth==2){
