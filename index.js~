@@ -445,7 +445,7 @@ function getDetails(id,text)
 	        							[
 					        				{
 												"type" : "postback",
-	        									"payload" : "more scores "+id,
+	        									"payload" : "more scores ",
 	        									"title" : "Refresh ..."
 											}
 				        				]
@@ -458,11 +458,11 @@ function getDetails(id,text)
 	        							[
 					        				{
 											"type" : "postback",
-	        									"payload" : "more scores "+id,
+	        									"payload" : "more scores "+id[i]+'^'+result[i],
 	        									"title" : "Refresh ..."
 											},{
 	        									"type" : "postback",
-	        									"payload" : "commentary "+id,
+	        									"payload" : "commentary "+id[i]+'^'+result[i],
 	        									"title" : "Last Five Balls"
 			        						},
 				        				]
@@ -496,7 +496,7 @@ function getDetails(id,text)
         							[
 				        				{
 	        									"type" : "postback",
-	        									"payload" : "more scores "+id,
+	        									"payload" : "more scores "+id[i]+'^'+result[i],
 	        									"title" : "Retry ..."
 			        					},
 			        				]

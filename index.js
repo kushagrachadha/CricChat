@@ -278,7 +278,7 @@ function getAll()
         							[
 				        				{
         									"type" : "postback",
-        									"payload" : "scores",
+        									"payload" : "refresh",
         									"title" : "Retry ..."
 		        						}
 			        				]
@@ -370,7 +370,7 @@ function getDetails(id,text)
         					[
         						{
         							"title" : "The Match hasn't started yet",
-									"image_url" : "http://placehold.it/350x200/0084ff/f7f7f7?text=Not+Started",
+								"image_url" : "http://placehold.it/350x200/0084ff/f7f7f7?text=Not+Started",
 				        			"subtitle" : text,
     	    							"buttons" :
         							[
@@ -458,11 +458,11 @@ function getDetails(id,text)
 	        							[
 					        				{
 											"type" : "postback",
-	        									"payload" : "more scores "+id[i]+'^'+result[i],
+	        									"payload" : "more scores "+id+'^'+text,
 	        									"title" : "Refresh ..."
 											},{
 	        									"type" : "postback",
-	        									"payload" : "commentary "+id[i]+'^'+result[i],
+	        									"payload" : "commentary "+id+'^'+text,
 	        									"title" : "Last Five Balls"
 			        						},
 				        				]
@@ -496,7 +496,7 @@ function getDetails(id,text)
         							[
 				        				{
 	        									"type" : "postback",
-	        									"payload" : "more scores "+id[i]+'^'+result[i],
+	        									"payload" : "more scores "+id+'^'+text,
 	        									"title" : "Retry ..."
 			        					},
 			        				]
