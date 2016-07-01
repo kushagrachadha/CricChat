@@ -198,10 +198,12 @@ function getAll()
 			        	var title = headers[i].toLowerCase();
 	    		    		console.log("\n Teams playing are "+title);
 	        			var imagetext=headers[i].replace(' ','+')
+					var indext=imagetext.indexOf(',')
+					var imagetxt=imagetext.substr(0,indext)
 	        			temp = 
 	        			{
 	        				"title" : headers[i],
-							"image_url" : "http://placehold.it/350x150/3b5998/f7f7f7?text="+imagetext,
+							"image_url" : "http://placehold.it/350x200/3b5998/f7f7f7?text="+imagetxt,
 							"subtitle" :result[i],
 							"text":short[i],
 	    	    			"buttons" :
