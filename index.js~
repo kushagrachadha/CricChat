@@ -347,7 +347,7 @@ function getCommentry(sender,id)
 			sendTextMessage(sender,temp);
 		}
 		
-		deasync.sleep(300);
+		deasync.sleep(50);//ye karun kya? messages line se jaate hain isse
 	}
 }	
 
