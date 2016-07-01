@@ -409,9 +409,14 @@ function getDetails(id,text)
 		var d=cheerio.load(match);
 		d('.team-totals').each(function()
 				{
-					titlearr.push(d(this).text());
+					if (d(this).text()!=undefined){
+						titlearr.push(d(this).text());}
 				});
-		title=titlearr[0]+' '+titlearr[1]; 
+		if (titlearr.length==1){
+			title=titlearr[0];}
+		else if(titlearr.lenth==2){
+		title=titlearr[0]+' vs '+titlearr[1]		
+		}
 		d('.table.table-condensed').each(function()
 			{
 					texts=texts+d(this).text()+' '+'\n'
@@ -440,7 +445,7 @@ function getDetails(id,text)
 	        							[
 					        				{
 												"type" : "postback",
-	        									"payload" : "more scores "+id,
+	        									"payload" : "more scores ",
 	        									"title" : "Refresh ..."
 											}
 				        				]
@@ -453,11 +458,11 @@ function getDetails(id,text)
 	        							[
 					        				{
 											"type" : "postback",
-	        									"payload" : "more scores "+id,
+	        									"payload" : "more scores "+id[i]+'^'+result[i],
 	        									"title" : "Refresh ..."
 											},{
 	        									"type" : "postback",
-	        									"payload" : "commentary "+id,
+	        									"payload" : "commentary "+id[i]+'^'+result[i],
 	        									"title" : "Last Five Balls"
 			        						},
 				        				]
@@ -491,7 +496,7 @@ function getDetails(id,text)
         							[
 				        				{
 	        									"type" : "postback",
-	        									"payload" : "more scores "+id,
+	        									"payload" : "more scores "+id[i]+'^'+result[i],
 	        									"title" : "Retry ..."
 			        					},
 			        				]
