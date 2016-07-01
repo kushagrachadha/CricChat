@@ -333,6 +333,7 @@ function getCommentry(sender,id)
 	}
 	else
 		sendTextMessage(sender, "Top is last ball");
+	var messagecount =0;
 	for (var i=0;i<cLength;i++)
 	{
 		var temp = commentary[i];
@@ -345,9 +346,11 @@ function getCommentry(sender,id)
 				temp = temp.slice(0, t)+"...";
 			}
 			sendTextMessage(sender,temp);
+			messagecount = messagecount +1;
+			if(messagecount===4) break;
 		}
 		
-		deasync.sleep(50);//ye karun kya? messages line se jaate hain isse
+		deasync.sleep(50);//ye karun kya? messages line se jaate hain isse meesage bhi kam karde 4-5
 	}
 }	
 

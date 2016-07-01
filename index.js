@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // Index route
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
-})
+})//ruk bhai
 
 // for Facebook verification
 app.get('/webhook/', function (req, res)
@@ -74,7 +74,9 @@ app.post('/webhook/', function (req, res)
 					{
 						text = text.replace("commentary ","").toLowerCase();
 						text = text.replace("commentary ","").toLowerCase();
-						var id = text.toLowerCase().replace("commentary ","");
+						var idtext = text.toLowerCase().replace("commentary ","");
+						var ind = idtext.indexOf("^")
+						var id = idtext.substr(0, ind);
 						getCommentry(sender,id);
 					}
 					else if(text.indexOf("refresh")>-1)
