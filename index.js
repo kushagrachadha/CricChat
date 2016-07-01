@@ -108,9 +108,7 @@ function init()
 }     
 
 //page token
-const token = "EAADOlaF2YaoBAJZA4aJqIpQfnZBm2F7Vd6gg9ws0Kcr2LgZCZCsdlZCbFzV9O5zSxdcR0Qpm14IBU1sK3vwKT9CRLS2dJYmtJLLnjCFzEad33LDQAO1eoLlLinNgwcplb1mmw8nXGspJLfcZCZBUwOquJOyTPIi4w9ZBbZCPLDYXQGQZDZD";
-
-//getting all matches
+const token = "EAADOlaF2YaoBAJZA4aJqIpQfnZBm2F7Vd6gg9ws0Kcr2LgZCZCsdlZCbFzV9O5zSxdcR0Qpm14IBU1sK3vwKT9CRLS2dJYmtJLLnjCFzEad33LDQAO1eoLlLinNgwcplb1mmw8nXGspJLfcZCZBUwOquJOyTPIi4w9ZBbZCPLDYXQGQZDZD"
 var t =[];
 function getAll()
 {
@@ -199,11 +197,11 @@ function getAll()
 					console.log("inside header");
 			        	var title = headers[i].toLowerCase();
 	    		    		console.log("\n Teams playing are "+title);
-	        	
+	        			var imagetext=headers[i].replace(' ','+')
 	        			temp = 
 	        			{
 	        				"title" : headers[i],
-							"image_url" : "http://imgur.com/download/vOVMIRu/",
+							"image_url" : "http://placehold.it/350x150/3b5998/f7f7f7?text="+imagetext,
 							"subtitle" :result[i],
 							"text":short[i],
 	    	    			"buttons" :
