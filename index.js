@@ -458,7 +458,7 @@ function getDetails(id,text)
 				        			},
 									{
 										"title" : "Commentary",
-										"image_url" : "http://bit.do/img000000012",
+										"image_url" : "http://res.cloudinary.com/de65sbgw9/image/upload/v1467682643/rfqjiwvribiozky4bkmy.jpg",
 										"subtitle" : "Press the button to get last 5 balls ",
 										"buttons" :
 	        							[
