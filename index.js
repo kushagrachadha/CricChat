@@ -458,7 +458,7 @@ function getDetails(id,text)
 				        			},
 									{
 										"title" : "Commentary",
-										"image_url" : "http://placehold.it/350x200/0084ff/f7f7f7?text=Commentary",
+										"image_url" : "http://bit.do/img000000012",
 										"subtitle" : "Press the button to get last 5 balls ",
 										"buttons" :
 	        							[
