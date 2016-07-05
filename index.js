@@ -205,7 +205,7 @@ function getAll()
 	        			temp = 
 	        			{
 	        				"title" : headers[i],
-							"image_url" : "http://res.cloudinary.com/de65sbgw9/image/upload/v1467683010/qgqgvewivjdj1ukbxhfa.jpg",
+							"image_url" : "http://res.cloudinary.com/de65sbgw9/image/upload/v1467683172/qcjyj1ridnwhb8g451lw.jpg",
 							"subtitle" :result[i],
 							"text":short[i],
 	    	    			"buttons" :
