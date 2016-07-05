@@ -205,7 +205,7 @@ function getAll()
 	        			temp = 
 	        			{
 	        				"title" : headers[i],
-							"image_url" : "http://placehold.it/350x0/0084ff/f7f7f7?text="+imagetxt,
+							"image_url" : "http://res.cloudinary.com/de65sbgw9/image/upload/v1467683010/qgqgvewivjdj1ukbxhfa.jpg",
 							"subtitle" :result[i],
 							"text":short[i],
 	    	    			"buttons" :
@@ -458,7 +458,7 @@ function getDetails(id,text)
 				        			},
 									{
 										"title" : "Commentary",
-										"image_url" : "http://res.cloudinary.com/de65sbgw9/image/upload/v1467682643/rfqjiwvribiozky4bkmy.jpg",
+										"image_url" : "http://placehold.it/350x200/0084ff/f7f7f7?text=Commentary",
 										"subtitle" : "Press the button to get last 5 balls ",
 										"buttons" :
 	        							[
