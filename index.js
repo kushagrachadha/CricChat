@@ -420,7 +420,7 @@ function getDetails(id,text)
 		console.log('\n\n'+titlearr.length+'\n\n')
 		if (titlearr.length==1){
 			title=titlearr[0];}
-		else if(titlearr.length==2){
+		else {
 		title=titlearr[0]+' vs '+titlearr[1]		
 		}
 		d('.table.table-condensed').each(function()

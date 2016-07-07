@@ -110,7 +110,7 @@ function init()
 }     
 
 //page token
-const token = "EAADewcQZCqSsBAB2YvZA6lgkcLv1PPukOZCe8g9H5fva0T1h4eSsCJycM8Orw7bUohy5VbbOduYBCQpZAviMt2dwDHkehNuKZAP8yUT6KVQSw7N9wXQuZCEGLpIXDMJO7fsBW3FkIMiZAHUrZCMl8hTAnhxclqflGQcDB8bPJPzz7AZDZD"
+const token = "EAAM6afxQxq0BAO02BniEbsqPZA2AZCA8U0pMBbdnpQoqZA9gyTLTfd4lMdLO4Q0K8JzoukxDl1YVpHvGr8GN9LcreDTV6GtHVwEUU4PyMewC0ZAyyyZBop6udis2bap6EkrdYNmkrGfwE5NZAzKjX3cAnQNBVAHWXjQm1R5mKuCwZDZD"
 var t =[];
 function getAll()
 {
