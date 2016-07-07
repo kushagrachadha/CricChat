@@ -421,7 +421,7 @@ function getDetails(id,text)
 		if (titlearr.length==1){
 			title=titlearr[0];}
 		else {
-		title=titlearr[-2]+' vs '+titlearr[-1]		
+		title=titlearr[titlearr.length-1]+' vs '+titlearr[titlearr.length-2]		
 		}
 		d('.table.table-condensed').each(function()
 			{
