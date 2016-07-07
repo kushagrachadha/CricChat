@@ -451,7 +451,7 @@ function getDetails(id,text)
 	        							[
 					        				{
 												"type" : "postback",
-	        									"payload" : "more scores ",
+	        									"payload" : "more scores "+id+'^'+text,
 	        									"title" : "Refresh ..."
 											}
 				        				]
