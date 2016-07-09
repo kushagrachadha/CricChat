@@ -205,7 +205,7 @@ function getAll()
 	        			temp = 
 	        			{
 	        				"title" : headers[i],
-							"image_url" : "http://placehold.it/350x0/0084ff/f7f7f7?text="+imagetxt,
+							"image_url" : "http://placehold.it/1024x512/0084ff/f7f7f7?text="+imagetxt,
 							"subtitle" :result[i],
 							"text":short[i],
 	    	    			"buttons" :

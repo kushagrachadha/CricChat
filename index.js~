@@ -274,7 +274,7 @@ function getAll()
         					[
         						{
         							"title" : "Couldn't get any Matches, Retry!",
-									"image_url" : "http://placehold.it/1024x720/0084ff/f7f7f7?text=No+Matches",
+									"image_url" : "http://placehold.it/1024x512/0084ff/f7f7f7?text=No+Matches",
 				        			"subtitle" : "Scores",
     	    						"buttons" :
         							[
@@ -375,7 +375,7 @@ function getDetails(id,text)
         					[
         						{
         							"title" : "The Match hasn't started yet",
-								"image_url" : "http://placehold.it/1024x720/0084ff/f7f7f7?text=Not+Started",
+								"image_url" : "http://placehold.it/1024x512/0084ff/f7f7f7?text=Not+Started",
 				        			"subtitle" : text,
     	    							"buttons" :
         							[
@@ -445,7 +445,7 @@ function getDetails(id,text)
 	        					[
 	        						{
 	        							"title" : title,
-									"image_url" : "http://placehold.it/1024x720/0084ff/f7f7f7?text=Summary",
+									"image_url" : "http://placehold.it/1024x512/0084ff/f7f7f7?text=Summary",
 					        			"subtitle" : texts,
 										"buttons" :
 	        							[
@@ -458,7 +458,7 @@ function getDetails(id,text)
 				        			},
 									{
 										"title" : "Commentary",
- 										"image_url" : "http://placehold.it/1024x720/0084ff/f7f7f7?text=Commentary",
+ 										"image_url" : "http://placehold.it/1024x512/0084ff/f7f7f7?text=Commentary",
 										"subtitle" : "Press the button to get last 5 balls ",
 										"buttons" :
 	        							[
@@ -496,7 +496,7 @@ function getDetails(id,text)
         					[
         						{
         							"title" : "Couldn't get the match Details, Retry!",
-									"image_url" : "hhttp://placehold.it/1024x720/0084ff/f7f7f7?text=No+Details",
+									"image_url" : "hhttp://placehold.it/1024x512/0084ff/f7f7f7?text=No+Details",
 				        			"subtitle" : "Scores",
     	    						"buttons" :
         							[
